@@ -1,14 +1,16 @@
 # frozen_string_literal: true
-require 'byebug'
+
+require "byebug"
 require_relative "hansen/version"
 
 module Hansen
   class Error < StandardError; end
-  
+
+  # Helper class to help with i.e. formatting and representation of numbers
   class NumberHelpers
     def self.decimal_and_separator(number)
       unless [Integer, Float].include?(number.class)
-        raise TypeError.new "Only Integer and Float types are allowed as an input"
+        raise TypeError, "Only Integer and Float types are allowed as an input"
       end
 
       number_array = number.to_s.split(".")
@@ -16,7 +18,7 @@ module Hansen
       units = number_array[0]
 
       num_groups = units.chars.to_a.reverse.each_slice(3)
-      return num_groups.map(&:join).join('.').reverse + decimals
+      num_groups.map(&:join).join(".").reverse + decimals
     end
   end
 end
