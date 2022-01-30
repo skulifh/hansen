@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require 'byebug'
+
+require "byebug"
 
 RSpec.describe Hansen do
   it "has a version number" do
